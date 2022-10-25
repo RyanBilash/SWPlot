@@ -42,9 +42,9 @@ Onderon,3.75,0.2
 Hapes,3.45,0.5
 Terephon,3.6,0.6
 Obroa-skai,2.85,1.75
-Dantooine,5.6,0
-Muunilist,5.5,-0.8
-Bastion,6.45,-0.85
+Dantooine,0,5.6
+Muunilist,-0.8,5.5
+Bastion,-0.85,6.45
 Orinda,-0.25,3.45
 Ithor,1.1,3.15
 Yag'Dhul,0.8,-4.85
@@ -67,7 +67,7 @@ Rhen Var,6.6,3.6
 Wayland,2.7,2.45
 Trandosha,4.8,0.3
 Ruusan,4.9,-1
-Toydaria,6.7,-1.7
+Toydaria,6.5,-1.5
 Boz Pity,7,0.7
 Honoghr,8.35,-0.35
 Barab I,9.1,-2.9

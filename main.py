@@ -7,6 +7,9 @@ DEFAULT_COLOR = "#4682B4"
 
 COLOR_UNIQUE = True
 
+POSITION_SCALE = 3
+LABEL_OFFSET = -0.9
+
 
 def add_hyperlanes(graph, filename):
     file = open(filename)
@@ -57,7 +60,6 @@ def get_general_map(filename):
 def color_by_points(graph, point_color):
     list_colors = []
     for key in graph.nodes():
-        print(key)
         if graph.nodes[key]["points"] in point_color.keys():
             list_colors.append(point_color[graph.nodes[key]["points"]])
         else:
@@ -65,9 +67,19 @@ def color_by_points(graph, point_color):
 
     return list_colors
 
+def planet_pos(filename):
+    file = open(filename)
+    reader = csv.reader(file)
+    mapping = {}
+    for row in reader:
+        mapping[row[0]] = [POSITION_SCALE*float(row[1]), POSITION_SCALE*float(row[2])]
+
+    return mapping
+
 
 if __name__ == '__main__':
     G = nx.Graph()
+    plt.figure(1,figsize=(20,20))
 
     """
     G.add_edge("Coruscant", "Anaxes")
@@ -149,22 +161,25 @@ if __name__ == '__main__':
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
     add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
-    add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
+    #add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
     add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
-    add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
+    #add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
     add_hyperlanes(G, "data/hyperlanes/northern.csv")
-    add_hyperlanes(G, "data/hyperlanes/slice.csv")
-    add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
-    add_hyperlanes(G, "data/hyperlanes/unknown.csv")
+    #add_hyperlanes(G, "data/hyperlanes/slice.csv")
+    #add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
+    #add_hyperlanes(G, "data/hyperlanes/unknown.csv")
     seed = 21
     # print(G.nodes)
 
     edges = [(u, v) for (u, v, d) in G.edges(data=True)]
 
-    pos = nx.spring_layout(G, seed=seed)  # positions for all nodes - seed for reproducibility
+    # pos = nx.spring_layout(G, seed=seed)  # positions for all nodes - seed for reproducibility
+    #print(pos["Coruscant"])
+    pos = planet_pos("data/planet-loc.csv")
+    print(pos["Coruscant"])
     label_pos = {}
     for key in pos.keys():
-        label_pos[key] = (pos[key][0], pos[key][1] - 0.1)
+        label_pos[key] = (pos[key][0], pos[key][1] + LABEL_OFFSET)
 
     # Get point values, then put them to the colors or something
     get_point_values(G, "data/planet-points.csv")
@@ -173,13 +188,13 @@ if __name__ == '__main__':
     colors2 = define_colors(G, "data/colors-u.csv")
 
     # nodes
-    nx.draw_networkx_nodes(G, pos, node_size=300, node_color=colors1)
+    nx.draw_networkx_nodes(G, pos, node_size=500, node_color=colors1)
 
     # edges
-    nx.draw_networkx_edges(G, pos, edgelist=edges, width=2, alpha=0.3)
+    nx.draw_networkx_edges(G, pos, edgelist=edges, width=3, alpha=0.3)
 
     # node labels
-    nx.draw_networkx_labels(G, label_pos, font_size=5, font_family="sans-serif")
+    nx.draw_networkx_labels(G, label_pos, font_size=8, font_family="sans-serif")
 
     ax = plt.gca()
     ax.margins(0.1)
