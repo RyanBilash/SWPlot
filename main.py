@@ -11,6 +11,7 @@ COLOR_UNIQUE = True
 def add_hyperlanes(graph, filename):
     file = open(filename)
     reader = csv.reader(file)
+
     for row in reader:
         for i in range(len(row) - 1):
             graph.add_edge(row[i], row[i + 1])
@@ -60,6 +61,7 @@ def color_by_points(graph, point_color):
             list_colors.append(point_color[graph.nodes[key]["points"]])
         else:
             list_colors.append(DEFAULT_COLOR)
+
     return list_colors
 
 
