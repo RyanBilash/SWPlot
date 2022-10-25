@@ -145,8 +145,8 @@ if __name__ == '__main__':
     G.add_edge("Naboo", "Malastare")
     """
 
-    add_hyperlanes(G, "limited.csv")
-    add_hyperlanes(G, "merc.csv")
+    add_hyperlanes(G, "data/hyperlanes/limited.csv")
+    add_hyperlanes(G, "data/hyperlanes/merc.csv")
     seed = 21
     # print(G.nodes)
 
@@ -158,10 +158,10 @@ if __name__ == '__main__':
         label_pos[key] = (pos[key][0], pos[key][1] - 0.1)
 
     # Get point values, then put them to the colors or something
-    get_point_values(G, "planet-points.csv")
+    get_point_values(G, "data/planet-points.csv")
 
-    colors1 = color_by_points(G, get_general_map("color-data.csv"))
-    colors2 = define_colors(G, "colors-u.csv")
+    colors1 = color_by_points(G, get_general_map("data/color-data.csv"))
+    colors2 = define_colors(G, "data/colors-u.csv")
 
     # nodes
     nx.draw_networkx_nodes(G, pos, node_size=300, node_color=colors1)
