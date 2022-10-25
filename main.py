@@ -57,6 +57,7 @@ def get_general_map(filename):
 def color_by_points(graph, point_color):
     list_colors = []
     for key in graph.nodes():
+        print(key)
         if graph.nodes[key]["points"] in point_color.keys():
             list_colors.append(point_color[graph.nodes[key]["points"]])
         else:
@@ -147,6 +148,13 @@ if __name__ == '__main__':
 
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
+    add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
+    add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
+    add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
+    add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
+    add_hyperlanes(G, "data/hyperlanes/northern.csv")
+    add_hyperlanes(G, "data/hyperlanes/slice.csv")
+    add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
     add_hyperlanes(G, "data/hyperlanes/unknown.csv")
     seed = 21
     # print(G.nodes)
