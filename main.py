@@ -147,6 +147,7 @@ if __name__ == '__main__':
 
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
+    add_hyperlanes(G, "data/hyperlanes/unknown.csv")
     seed = 21
     # print(G.nodes)
 
