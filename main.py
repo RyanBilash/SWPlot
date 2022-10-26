@@ -9,6 +9,7 @@ DEFAULT_COLOR = "#4682B4"
 COLOR_UNIQUE = True
 
 POSITION_SCALE = 1
+RADIUS = 0.25
 LABEL_OFFSET = -0.6
 
 
@@ -82,6 +83,20 @@ def planet_pos(filename):
 def onclick(event):
     x, y = event.xdata, event.ydata
     print(str(x) + " " + str(y))
+    # Radius is 0.25
+    clicked = None
+    smallest_distance = 999
+    for key in pos:
+        distance = ((x-pos[key][0]) ** 2) + ((y-pos[key][1]) ** 2)
+        if distance < RADIUS and key is None:
+            clicked = key
+            smallest_distance = distance
+        elif key is not None:
+            if distance < smallest_distance:
+                clicked = key
+                smallest_distance = distance
+
+    print(clicked)
 
     # Add planets and do stuff
     add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
