@@ -5,7 +5,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.widgets as widgets
 
-
 DEFAULT_COLOR = "#4682B4"
 
 COLOR_KEY = "p"
@@ -71,6 +70,7 @@ def color_by_points(graph, point_color):
 
     return list_colors
 
+
 def color_by_control(graph, filename):
     # TODO
     return None
@@ -88,14 +88,15 @@ def planet_pos(filename):
 
 def onclick(event):
     x, y = event.xdata, event.ydata
-    print(str(x) + " " + str(y))
+
     # Radius is 0.25
     clicked = None
     smallest_distance = 999
+
     for key in pos:
         if key not in G.nodes():
             continue
-        distance = ((x-pos[key][0]) ** 2) + ((y-pos[key][1]) ** 2)
+        distance = ((x - pos[key][0]) ** 2) + ((y - pos[key][1]) ** 2)
         if distance < RADIUS and key is None:
             clicked = key
             smallest_distance = distance
@@ -143,7 +144,7 @@ def draw_graph(change_colors=False, change_edges=False):
     nx.draw_networkx_labels(G, label_pos, font_size=8, font_family="sans-serif")
 
     ax = plt.gca()
-    #widgets.CheckButtons(ax,["Core","Rim","Unknown"])
+    # widgets.CheckButtons(ax,["Core","Rim","Unknown"])
     ax.margins(0.1)
     plt.axis("off")
     plt.tight_layout()
@@ -156,20 +157,21 @@ def func(checkbox):
     if checkbox:
         print("here")
 
+
 if __name__ == '__main__':
     G = nx.Graph()
     fig = plt.figure("Map", figsize=(10, 10))
 
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
-    #add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
-    #add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
-    #add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
-    #add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
-    #add_hyperlanes(G, "data/hyperlanes/northern.csv")
-    #add_hyperlanes(G, "data/hyperlanes/slice.csv")
-    #add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
-    #add_hyperlanes(G, "data/hyperlanes/unknown.csv")
+    # add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
+    # add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
+    # add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
+    # add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
+    # add_hyperlanes(G, "data/hyperlanes/northern.csv")
+    # add_hyperlanes(G, "data/hyperlanes/slice.csv")
+    # add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
+    # add_hyperlanes(G, "data/hyperlanes/unknown.csv")
 
     pos = planet_pos("data/planet-loc.csv")
     label_pos = {}
@@ -189,4 +191,3 @@ if __name__ == '__main__':
 
     draw_graph()
     plt.show()
-
