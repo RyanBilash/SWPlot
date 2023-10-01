@@ -13,6 +13,7 @@ POSITION_SCALE = 1
 RADIUS = 0.25
 LABEL_OFFSET = -0.6
 
+UNIQUE_MAP = None
 
 def add_hyperlanes(graph, filename):
     file = open(filename)
@@ -32,9 +33,11 @@ def get_point_values(graph, filename):
 
 
 def define_colors(graph, filename):
-    colors = get_general_map(filename)
+    global UNIQUE_MAP
+    if UNIQUE_MAP is not None:
+        UNIQUE_MAP = get_general_map(filename)
 
-    return color_map_to_list(colors, graph)
+    return color_map_to_list(UNIQUE_MAP, graph)
 
 
 def color_map_to_list(colors, graph):
