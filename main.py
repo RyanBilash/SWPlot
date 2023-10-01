@@ -132,7 +132,8 @@ def draw_graph(change_colors=False, change_edges=False):
     if change_colors:
         global colors1, colors2
         colors1 = color_by_points(G, full_colors)
-        colors2 = color_map_to_list(full_colors, G)
+        # colors2 = color_map_to_list(full_colors, G)
+        colors2 = define_colors(G, "data/colors-u.csv")
         match COLOR_KEY:
             case 'p':
                 colors = colors1
@@ -171,9 +172,9 @@ if __name__ == '__main__':
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
     # add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
-    # add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
+    add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
     # add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
-    # add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
+    add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
     # add_hyperlanes(G, "data/hyperlanes/northern.csv")
     # add_hyperlanes(G, "data/hyperlanes/slice.csv")
     # add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
