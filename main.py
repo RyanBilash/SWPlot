@@ -114,6 +114,15 @@ def onclick(event):
     draw_graph(True, True)
 
 
+def onkey(event):
+    print(event.key)
+    if event.key in ['p', 'u', 'c']:
+        global COLOR_KEY
+        COLOR_KEY = event.key
+
+        draw_graph(True, True)
+
+
 def draw_graph(change_colors=False, change_edges=False):
     global fig, colors
     fig.clf()
@@ -130,7 +139,8 @@ def draw_graph(change_colors=False, change_edges=False):
             case 'u':
                 colors = colors2
             case 'c':
-                colors = colors3
+                # colors = colors3
+                colors = colors1
 
     nx.draw_networkx_nodes(G, pos, node_size=500, node_color=colors)
 
@@ -149,13 +159,9 @@ def draw_graph(change_colors=False, change_edges=False):
     plt.axis("off")
     plt.tight_layout()
     click_reg = fig.canvas.mpl_connect('button_press_event', onclick)
+    key_reg = fig.canvas.mpl_connect('key_press_event', onkey)
 
     fig.canvas.draw()
-
-
-def func(checkbox):
-    if checkbox:
-        print("here")
 
 
 if __name__ == '__main__':
