@@ -162,8 +162,8 @@ def draw_graph(change_colors=False, change_edges=False):
     ax.margins(0.1)
     plt.axis("off")
     plt.tight_layout()
-    click_reg = fig.canvas.mpl_connect('button_press_event', onclick)
-    key_reg = fig.canvas.mpl_connect('key_press_event', onkey)
+    #click_reg = fig.canvas.mpl_connect('button_press_event', onclick)
+    #key_reg = fig.canvas.mpl_connect('key_press_event', onkey)
 
     fig.canvas.draw()
 
@@ -174,14 +174,14 @@ if __name__ == '__main__':
 
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
-    add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
-    add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
-    add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
-    add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
+    #add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
+    #add_hyperlanes(G, "data/hyperlanes/core-inner.csv")
+    #add_hyperlanes(G, "data/hyperlanes/inner-rim.csv")
+    #add_hyperlanes(G, "data/hyperlanes/hapan-space.csv")
     add_hyperlanes(G, "data/hyperlanes/northern.csv")
-    add_hyperlanes(G, "data/hyperlanes/slice.csv")
-    add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
-    add_hyperlanes(G, "data/hyperlanes/unknown.csv")
+    #add_hyperlanes(G, "data/hyperlanes/slice.csv")
+    #add_hyperlanes(G, "data/hyperlanes/western-reaches.csv")
+    #add_hyperlanes(G, "data/hyperlanes/unknown.csv")
 
     pos = planet_pos("data/planet-loc.csv")
     label_pos = {}
