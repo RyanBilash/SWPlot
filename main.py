@@ -119,6 +119,7 @@ def onclick(event):
 
 def onkey(event):
     print(event.key)
+    #clicking
     if event.key in ['p', 'u', 'c']:
         global COLOR_KEY
         COLOR_KEY = event.key
