@@ -196,8 +196,8 @@ if __name__ == '__main__':
     full_colors = get_general_map("data/color-data.csv")
 
     colors1 = color_by_points(G, full_colors)
-    colors2 = define_colors(G, "data/colors-u.csv")
-    colors3 = color_by_control(G, "data/player-control.csv")
+    #colors2 = define_colors(G, "data/colors-u.csv")
+    #colors3 = color_by_control(G, "data/player-control.csv")
     colors = colors1
 
     draw_graph()
