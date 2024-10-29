@@ -173,12 +173,6 @@ if __name__ == '__main__':
     G = nx.Graph()
     fig = plt.figure("Map", figsize=(10, 10))
 
-
-
-
-
-
-
     add_hyperlanes(G, "data/hyperlanes/limited.csv")
     add_hyperlanes(G, "data/hyperlanes/merc.csv")
     add_hyperlanes(G, "data/hyperlanes/deep-core.csv")
