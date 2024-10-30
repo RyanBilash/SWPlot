@@ -200,5 +200,8 @@ if __name__ == '__main__':
     #colors3 = color_by_control(G, "data/player-control.csv")
     colors = colors1
 
+
+
+
     draw_graph()
     plt.show()
